@@ -1,0 +1,97 @@
+<div class="heading">
+  <h1 class="head">
+    Weather App
+    <span><img class="size" src="/assets/images/CloudySun.webp" /></span>
+  </h1>
+
+  <div class="btn-grp">
+    <input type="text" [(ngModel)]="city" placeholder="Enter city name" />
+    <button (click)="getWeather()">Get Weather</button>
+  </div>
+</div>
+<div class="container">
+  <div class="upper-data">
+    <img
+      [src]="
+        weatherImages[
+          weatherData()?.timelines?.daily[0]?.values?.weatherCodeMax
+        ]
+          ? 'assets/images/' +
+            weatherImages[
+              weatherData()?.timelines?.daily[0]?.values?.weatherCodeMax
+            ]
+          : 'assets/images/default.jpg'
+      "
+      alt="Error in loading"
+    />
+    <div class="weather-data" *ngIf="weatherData()">
+      <div class="location">
+        <h2>Weather in {{ weatherData()?.location?.name }}</h2>
+      </div>
+      <div class="temperature">
+        {{ weatherData()?.timelines?.daily[0]?.values?.temperatureMax }}°C
+      </div>
+    </div>
+  </div>
+
+  <div class="lower-Data">
+    <div>
+      <h2>More Information</h2>
+      <div class="more-info">
+        <div class="info-block">
+          <div class="info-label">
+            <img src="/assets/images/max.png" />
+            <span>Max Temperature</span>
+          </div>
+          <div class="info-value">
+            {{ weatherData()?.timelines?.daily[0]?.values?.temperatureMax }}°C
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">
+            <img src="/assets/images/min.png" />
+            <span>Min Temperature</span>
+          </div>
+          <div class="info-value">
+            {{ weatherData()?.timelines?.daily[0]?.values?.temperatureMin }}°C
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">
+            <img src="/assets/images/humidity.webp" />
+            <span>Humidity</span>
+          </div>
+          <div class="info-value">
+            {{ weatherData()?.timelines?.daily[0]?.values?.humidityAvg }}%
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">
+            <img src="/assets/images/windSpeed.webp" />
+            <span>Wind Speed</span>
+          </div>
+          <div class="info-value">
+            {{ weatherData()?.timelines?.daily[0]?.values?.windSpeedAvg }} m/s
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">
+            <img class="size" src="/assets/images/CloudySun.webp" />
+            <span>Weather</span>
+          </div>
+          <div class="info-value">
+            {{
+              getWeatherDescription(
+                weatherData()?.timelines?.daily[0]?.values?.weatherCodeMax
+              )
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
