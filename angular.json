@@ -29,10 +29,9 @@
               
               {
                 "glob": "**/*",
-    "input": "public/assets",
-    "output": "assets"
-                
-              }
+                "input": "public/assets",
+                "output": "assets"
+               }
             ],
             "styles": [
               "src/styles.scss"
@@ -90,11 +89,9 @@
             "assets": [
               {
                 "glob": "**/*",
-    "input": "public/assets",
-    "output": "assets"
-               
-              }
-            ],
+                "input": "public/assets",
+                "output": "assets"
+                }             ],
             "styles": [
               "src/styles.scss"
             ],
